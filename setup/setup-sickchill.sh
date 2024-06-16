@@ -1,8 +1,8 @@
 #!/bin/bash -eu
 
-NAME=deluge
-IMAGE=lscr.io/linuxserver/deluge:latest
-PORT=8112
+NAME=sickchill
+IMAGE=lscr.io/linuxserver/${NAME}:latest
+PORT=8082
 
 source .common.sh
 
@@ -25,12 +25,10 @@ ExecStartPre=/usr/bin/sudo /usr/bin/docker pull ${IMAGE}
 ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PUID=${USER_ID} \
 		-e PGID=${USER_ID} \
-		--mount type=bind,src=${STORAGE_DIR},dst=/downloads \
+		--mount type=bind,src=${TV_DIR},dst=/tv \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
-		-p ${PORT}:8112 \
-		-p 6881:6881 \
-		-p 6881:6881/udp \
-		-p 58846:58846 \
+		--mount type=bind,src=${STORAGE_DIR},dst=/downloads \
+		-p ${PORT}:8081 \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \
 		${IMAGE}
