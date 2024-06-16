@@ -24,7 +24,10 @@ function common_install {
     mkdir -p ${MUSIC_DIR}
     systemctl --user daemon-reload
     systemctl --user enable --now ${NAME}.service
-    echo "${NAME} installed. Check the status with systemctl --user status ${NAME}.service"
+    echo "${NAME} installed."
+    echo "  - Check the status with: systemctl --user status ${NAME}.service."
+    echo "  - Check logs with: docker logs ${NAME} or journalctl --user -u ${NAME}."
+    echo "  - ${NAME} should be available on http://localhost:${PORT}"
     enable_tailscale
 }
 

@@ -16,6 +16,8 @@ Features
 - Uses docker commandline managed by systemd.
 - Every container gets it's own isolated config directory and data directory
 - all 'user' level systemd - little or no footprint into the 'system' level systemd setup.
+- if Tailscale is installed, it will set up a systemd service to start a 'tailscale serve' for your app.
+
 
 
 Pre-req
@@ -33,4 +35,5 @@ List of services
 - sickgear - http://localhost:8081
 - sickchill - http://localhost:8081
 - sickgear - http://localhost:8082
-
+- sabnzbd - http://localhost:8083
+- deluge - http://localhost:8112
