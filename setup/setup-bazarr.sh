@@ -28,7 +28,7 @@ ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		--mount type=bind,src=${TV_DIR},dst=/tv \
 		--mount type=bind,src=${MOVIES_DIR},dst=/movies \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
-		-p ${PORT}:6767 \
+		-p ${PORT}:${PORT} \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \
 		${IMAGE}

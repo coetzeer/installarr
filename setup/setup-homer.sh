@@ -26,7 +26,7 @@ ExecStart=/usr/bin/docker run --rm \
 		--user=${USER_ID}:${USER_ID} \
 		--cap-drop=ALL \
 		--mount type=bind,src=${STORAGE_DIR},dst=/www/assets \
-		-p ${PORT}:8080 \
+		-p ${PORT}:${PORT} \
 		--name ${NAME} \
 		${IMAGE}
 

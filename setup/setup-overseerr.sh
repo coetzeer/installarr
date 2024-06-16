@@ -26,7 +26,7 @@ ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PUID=${USER_ID} \
 		-e PGID=${USER_ID} \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
-		-p ${PORT}:5055 \
+		-p ${PORT}:${PORT} \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \
 		${IMAGE}

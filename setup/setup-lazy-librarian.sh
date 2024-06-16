@@ -1,8 +1,8 @@
 #!/bin/bash -eu
-# https://hub.docker.com/r/linuxserver/plex
-NAME=plex
+
+NAME=lazylibrarian
 IMAGE=lscr.io/linuxserver/${NAME}:latest
-PORT=32400
+PORT=5299
 
 source .common.sh
 
@@ -25,15 +25,14 @@ ExecStartPre=/usr/bin/sudo /usr/bin/docker pull ${IMAGE}
 ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PUID=${USER_ID} \
 		-e PGID=${USER_ID} \
-		-e VERSION=docker \
+		-e DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver \
+		--mount type=bind,src=${COMMON_DL},dst=/downloads \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
-		--mount type=bind,src=${MOVIES_DIR},dst=/movies \
-		--mount type=bind,src=${TV_DIR},dst=/tv \
+		--mount type=bind,src=${BOOKS_DIR},dst=/books \
 		-p ${PORT}:${PORT} \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \
 		${IMAGE}
-
 
 [Install]
 WantedBy=default.target
@@ -41,4 +40,3 @@ WantedBy=default.target
 EOF
 
 common_install
-echo "  - Plex uses the /web context - so the uri is http://localhost:${PORT}/web"

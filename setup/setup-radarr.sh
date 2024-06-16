@@ -25,10 +25,10 @@ ExecStartPre=/usr/bin/sudo /usr/bin/docker pull ${IMAGE}
 ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PUID=${USER_ID} \
 		-e PGID=${USER_ID} \
-		--mount type=bind,src=${STORAGE_DIR},dst=/downloads \
+		--mount type=bind,src=${COMMON_DL},dst=/downloads \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
 		--mount type=bind,src=${MOVIES_DIR},dst=/movies \
-		-p ${PORT}:7878 \
+		-p ${PORT}:${PORT} \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \
 		${IMAGE}

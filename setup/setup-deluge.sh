@@ -25,9 +25,9 @@ ExecStartPre=/usr/bin/sudo /usr/bin/docker pull ${IMAGE}
 ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PUID=${USER_ID} \
 		-e PGID=${USER_ID} \
-		--mount type=bind,src=${STORAGE_DIR},dst=/downloads \
+		--mount type=bind,src=${COMMON_DL},dst=/downloads \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
-		-p ${PORT}:8112 \
+		-p ${PORT}:${PORT} \
 		-p 6881:6881 \
 		-p 6881:6881/udp \
 		-p 58846:58846 \

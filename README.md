@@ -43,3 +43,12 @@ List of services
 - sonarr - http://localhost:8989
 - plex - http://localhost:32400
 - overseer - http://localhost:5055
+- ombi - http://localhost:3579
+- mylar3 - http://localhost:8090
+- lazy-librarian - http://localhost:5299
+- jellyfin - http://localhost:8096
+- emby - http://localhost:8097
+- heimdall - http://localhost:8084
+
+Monitor them all with uptime kuma
+- uptime kuma - http://localhost:3001

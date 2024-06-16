@@ -25,7 +25,7 @@ ExecStartPre=/usr/bin/sudo /usr/bin/docker pull ${IMAGE}
 ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PUID=${USER_ID} \
 		-e PGID=${USER_ID} \
-		--mount type=bind,src=${STORAGE_DIR},dst=/downloads \
+		--mount type=bind,src=${COMMON_DL},dst=/downloads \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
 		-p ${PORT}:8080 \
 		-e TZ=Etc/UTC \

@@ -1,8 +1,9 @@
 #!/bin/bash -eu
-# https://hub.docker.com/r/linuxserver/plex
-NAME=plex
+# https://hub.docker.com/r/linuxserver/emby
+# see here for further config options (e.g. hardware acceleration)
+NAME=emby
 IMAGE=lscr.io/linuxserver/${NAME}:latest
-PORT=32400
+PORT=8097
 
 source .common.sh
 
@@ -29,7 +30,7 @@ ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
 		--mount type=bind,src=${MOVIES_DIR},dst=/movies \
 		--mount type=bind,src=${TV_DIR},dst=/tv \
-		-p ${PORT}:${PORT} \
+		-p ${PORT}:8096 \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \
 		${IMAGE}

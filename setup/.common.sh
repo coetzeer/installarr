@@ -11,6 +11,8 @@ export TV_DIR=${MAIN_STORAGE}/tv
 export MOVIES_DIR=${MAIN_STORAGE}/movies
 export BOOKS_DIR=${MAIN_STORAGE}/books
 export MUSIC_DIR=${MAIN_STORAGE}/music
+export COMICS_DIR=${MAIN_STORAGE}/comics
+export COMMON_DL=${MAIN_STORAGE}/downloads
 export CONFIG_DIR=${MAIN_CONFIG}/${NAME}
 
 
@@ -22,6 +24,8 @@ function common_install {
     mkdir -p ${MOVIES_DIR}
     mkdir -p ${BOOKS_DIR}
     mkdir -p ${MUSIC_DIR}
+    mkdir -p ${COMMON_DL}
+    mkdir -p ${COMICS_DIR}
     systemctl --user daemon-reload
     systemctl --user enable --now ${NAME}.service
     echo "${NAME} installed."

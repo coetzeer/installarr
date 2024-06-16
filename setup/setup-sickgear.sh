@@ -27,7 +27,7 @@ ExecStart=/usr/bin/sudo /usr/bin/docker run --rm \
 		-e PGID=${USER_ID} \
 		--mount type=bind,src=${TV_DIR},dst=/tv \
 		--mount type=bind,src=${CONFIG_DIR},dst=/config \
-		--mount type=bind,src=${STORAGE_DIR},dst=/downloads \
+		--mount type=bind,src=${COMMON_DL},dst=/downloads \
 		-p ${PORT}:8081 \
 		-e TZ=Etc/UTC \
 		--name ${NAME} \

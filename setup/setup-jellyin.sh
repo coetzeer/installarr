@@ -1,8 +1,9 @@
 #!/bin/bash -eu
-# https://hub.docker.com/r/linuxserver/plex
-NAME=plex
+# https://hub.docker.com/r/linuxserver/jellyfin
+# see here for futher config options (e.g. hardware acceleration)
+NAME=jellyfin
 IMAGE=lscr.io/linuxserver/${NAME}:latest
-PORT=32400
+PORT=8096
 
 source .common.sh
 
